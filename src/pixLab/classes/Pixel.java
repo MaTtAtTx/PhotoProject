@@ -163,8 +163,8 @@ public class Pixel
    * you can have.
    * @return the amount of blue from 0 for none to 255 for max
    */
-  public int getBlue() { 
-    
+  public int getBlue() 
+  { 
     /* get the value at the location from the picture as a 32 bit int
      * with alpha, red, green, blue each taking 8 bits from left to right
      */
@@ -366,4 +366,15 @@ public class Pixel
       " blue=" + getBlue();
   }
 
+  public boolean isTransparent()
+  {
+	  boolean transparency = false;
+	  
+	  if (getAlpha() == 255 && getRed() == 0 && getGreen() == 0 && getBlue() == 0)
+	  {
+		  transparency = true;
+	  }
+	  
+	  return transparency;
+  }
 }
