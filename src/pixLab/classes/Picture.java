@@ -210,7 +210,7 @@ public class Picture extends SimplePicture
 		for (int toRow = startRow; toRow < toPixels.length && fromRow < fromPixels.length; toRow++)
 		{
 			int fromCol = 0;
-			for (int toCol = 0; toCol < toPixels[0].length && fromCol < fromPixels[0].length; toCol++)
+			for (int toCol = startCol; toCol < toPixels[0].length && fromCol < fromPixels[0].length; toCol++)
 			{
 				fromPixel = fromPixels[fromRow][fromCol];
 				toPixel = toPixels[toRow][toCol];
