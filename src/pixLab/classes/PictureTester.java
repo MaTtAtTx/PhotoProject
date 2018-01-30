@@ -60,6 +60,14 @@ public class PictureTester
     swan.explore();
   }
   
+  /** Method to test edgeDetection */
+  public static void testZapdosFilter()
+  {
+    Picture gorge = new Picture("gorge.jpg");
+    gorge.zapdosFilter(gorge.getHeight() / 2, gorge.getWidth() / 2);
+    gorge.explore();
+  }
+  
   /** Main method for testing.  Every class can have a main
     * method in Java */
   public static void main(String[] args)
@@ -79,7 +87,7 @@ public class PictureTester
     //testMirrorArms();
     //testMirrorGull();
     //testMirrorDiagonal();
-	  testMirrorHorizontalBotToTop();
+	//testMirrorHorizontalBotToTop();
     //testCollage();
     //testCopy();
     //testEdgeDetection();
@@ -90,5 +98,6 @@ public class PictureTester
     //testSetRedToHalfValueInTopHalf();
     //testClearBlueOverValue(200);
     //testGetAverageForColumn(0);
+	testZapdosFilter();
   }
 }
