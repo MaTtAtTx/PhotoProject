@@ -102,6 +102,7 @@ public class Picture extends SimplePicture
 			for (Pixel pixelObj : rowArray)
 			{
 				pixelObj.setBlue(0);
+				pixelObj.setRed(0);
 			}
 		}
 	}
@@ -270,6 +271,26 @@ public class Picture extends SimplePicture
 			}
 		}
 	}
+	
+	public void glitchArt()
+	{
+		Pixel[][] pixels = this.getPixels2D();
+		Pixel initialPixel = null;
+		Pixel newPixel = null;
+		int shift = (int) (0.3 * pixels[0].length);
+		for (int row = 0; row < pixels.length; row++)
+		{
+			for (int col = 0; col < pixels[0].length; col++)
+			{
+				initialPixel = pixels[row][col];
+				newPixel = pixels[row][col + shift];
+				if ()
+				{
+					newPixel.setColor(initialPixel.getColor());
+				}
+			}
+		}
+	}
 
 	/*
 	 * Main method for testing - each class in Java can have a main method
@@ -278,7 +299,7 @@ public class Picture extends SimplePicture
 	{
 		Picture beach = new Picture("beach.jpg");
 		beach.explore();
-		beach.zeroBlue();
+		beach.glitchArt();
 		beach.explore();
 	}
 
