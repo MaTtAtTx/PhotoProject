@@ -60,13 +60,24 @@ public class PictureTester
     swan.explore();
   }
   
-  /** Method to test edgeDetection */
+  /** Method to test zapdosFilter */
   public static void testZapdosFilter()
   {
     Picture gorge = new Picture("gorge.jpg");
+    gorge.explore();
     gorge.zapdosFilter(gorge.getHeight() / 2, gorge.getWidth() / 2);
     gorge.explore();
   }
+  
+  /** Method to test glitchArt */
+  public static void testGlitchArt()
+  {
+    Picture beach = new Picture("beach.jpg");
+    beach.explore();
+    beach.glitchArt();
+    beach.explore();
+  }
+  
   
   /** Main method for testing.  Every class can have a main
     * method in Java */
@@ -75,7 +86,7 @@ public class PictureTester
     // uncomment a call here to run a test
     // and comment out the ones you don't want
     // to run
-    testZeroBlue();
+    //testZeroBlue();
     //testKeepOnlyBlue();
     //testKeepOnlyRed();
     //testKeepOnlyGreen();
@@ -98,6 +109,7 @@ public class PictureTester
     //testSetRedToHalfValueInTopHalf();
     //testClearBlueOverValue(200);
     //testGetAverageForColumn(0);
-	testZapdosFilter();
+	//testZapdosFilter();
+	testGlitchArt();
   }
 }

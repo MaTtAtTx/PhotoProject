@@ -275,19 +275,27 @@ public class Picture extends SimplePicture
 	public void glitchArt()
 	{
 		Pixel[][] pixels = this.getPixels2D();
-		Pixel initialPixel = null;
-		Pixel newPixel = null;
-		int shift = (int) (0.3 * pixels[0].length);
+		Pixel leftPixel = null;
+		Pixel rightPixel = null;
+		Pixel midPixel = null;
+		int shiftAmount = (int) (0.3 * pixels[0].length);
+		int width = pixels[0].length;
+		
 		for (int row = 0; row < pixels.length; row++)
 		{
 			for (int col = 0; col < pixels[0].length; col++)
 			{
-				initialPixel = pixels[row][col];
-				newPixel = pixels[row][col + shift];
-				if ()
-				{
-					newPixel.setColor(initialPixel.getColor());
-				}
+				leftPixel = pixels[row][col];
+				rightPixel = pixels[row][(width - shiftAmount + col) % width];
+				midPixel = pixels[row][(col + shiftAmount) % width];
+				
+				Color leftColor = leftPixel.getColor();
+				Color rightColor = rightPixel.getColor();
+				Color midColor = midPixel.getColor();
+				
+				leftPixel.setColor(rightColor);
+				rightPixel.setColor(midColor);
+				midPixel.setColor(leftColor);
 			}
 		}
 	}
@@ -299,7 +307,7 @@ public class Picture extends SimplePicture
 	{
 		Picture beach = new Picture("beach.jpg");
 		beach.explore();
-		beach.glitchArt();
+		beach.zeroBlue();
 		beach.explore();
 	}
 
