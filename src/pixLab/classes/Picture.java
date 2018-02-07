@@ -275,27 +275,21 @@ public class Picture extends SimplePicture
 	public void glitchArt()
 	{
 		Pixel[][] pixels = this.getPixels2D();
-		Pixel leftPixel = null;
-		Pixel rightPixel = null;
-		Pixel midPixel = null;
 		int shiftAmount = (int) (0.3 * pixels[0].length);
 		int width = pixels[0].length;
 		
 		for (int row = 0; row < pixels.length; row++)
 		{
+			Color [] currentColors = new Color[pixels[0].length];
+			
+			for (int col = 0; col < pixels[row].length; col++)
+			{
+				currentColors[col] = pixels[row][col].getColor();
+			}
+			
 			for (int col = 0; col < pixels[0].length; col++)
 			{
-				leftPixel = pixels[row][col];
-				rightPixel = pixels[row][(width - shiftAmount + col) % width];
-				midPixel = pixels[row][(col + shiftAmount) % width];
-				
-				Color leftColor = leftPixel.getColor();
-				Color rightColor = rightPixel.getColor();
-				Color midColor = midPixel.getColor();
-				
-				leftPixel.setColor(rightColor);
-				rightPixel.setColor(midColor);
-				midPixel.setColor(leftColor);
+				pixels[row][col].setColor(currentColors[(col + shiftAmount) % width]);
 			}
 		}
 	}
