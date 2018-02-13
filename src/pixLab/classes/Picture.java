@@ -293,6 +293,27 @@ public class Picture extends SimplePicture
 			}
 		}
 	}
+	
+	public void classFilter()
+	{
+		int mirrorPoint = 87;
+		Pixel leftPixel = null;
+		Pixel rightPixel = null;
+		Pixel[][] pixels = this.getPixels2D();
+		int height = pixels.length;
+		double sideArea = (pixels.length * .1);
+
+		for (int row = (int) sideArea; row < height - sideArea; row++)
+		{
+			for (int col = 67; col < mirrorPoint; col++)
+			{
+
+				leftPixel = pixels[row][col];
+				rightPixel = pixels[row][mirrorPoint - col + mirrorPoint];
+				rightPixel.setColor(leftPixel.getColor());
+			}
+		}
+	}
 
 	/*
 	 * Main method for testing - each class in Java can have a main method
@@ -301,7 +322,7 @@ public class Picture extends SimplePicture
 	{
 		Picture beach = new Picture("beach.jpg");
 		beach.explore();
-		beach.zeroBlue();
+		beach.classFilter();
 		beach.explore();
 	}
 
