@@ -491,7 +491,7 @@ public class SimplePicture implements DigitalPicture
          System.out.println("There was an error trying to open " + fileName);
          bufferedImage = new BufferedImage(600,200,
                                            BufferedImage.TYPE_INT_RGB);
-         addMessage("Couldn't load " + fileName,5,100);
+         addMessage("Couldn't load " + fileName,5,100,255,255,255);
          return false;
      }
          
@@ -514,13 +514,13 @@ public class SimplePicture implements DigitalPicture
   * @param xPos  the x coordinate of the leftmost point of the string 
   * @param yPos  the y coordinate of the bottom of the string  
   */
- public void addMessage(String message, int xPos, int yPos)
+ public void addMessage(String message, int xPos, int yPos, int rColor, int gColor, int bColor)
  {
    // get a graphics context to use to draw on the buffered image
    Graphics2D graphics2d = bufferedImage.createGraphics();
    
    // set the color to white
-   graphics2d.setPaint(Color.white);
+   graphics2d.setPaint(new Color(rColor, gColor, bColor));
    
    // set the font to Helvetica bold style and size 16
    graphics2d.setFont(new Font("Helvetica",Font.BOLD,16));
@@ -536,9 +536,9 @@ public class SimplePicture implements DigitalPicture
   * @param xPos the left x for the text 
   * @param yPos the top y for the text
   */
- public void drawString(String text, int xPos, int yPos)
+ public void drawString(String text, int xPos, int yPos, int rColor, int gColor, int bColor)
  {
-   addMessage(text,xPos,yPos);
+   addMessage(text,xPos,yPos,255,255,255);
  }
  
  /**

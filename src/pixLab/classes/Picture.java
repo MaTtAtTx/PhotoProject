@@ -296,16 +296,17 @@ public class Picture extends SimplePicture
 	
 	public void classFilter()
 	{
-		int mirrorPoint = 87;
+		int mirrorPoint = 200;
 		Pixel leftPixel = null;
 		Pixel rightPixel = null;
 		Pixel[][] pixels = this.getPixels2D();
 		int height = pixels.length;
-		double sideArea = (pixels.length * .1);
+		double topBotArea = (pixels.length * .1);
+		double sideArea = (pixels[0].length * .1);
 
-		for (int row = (int) sideArea; row < height - sideArea; row++)
+		for (int row = (int) topBotArea; row < height - topBotArea; row++)
 		{
-			for (int col = 67; col < mirrorPoint; col++)
+			for (int col = 180; col < mirrorPoint; col++)
 			{
 
 				leftPixel = pixels[row][col];
@@ -313,6 +314,8 @@ public class Picture extends SimplePicture
 				rightPixel.setColor(leftPixel.getColor());
 			}
 		}
+		
+		pixels.addMessage("Hello", topBotArea, sideArea, 154, 12, 15);
 	}
 
 	/*
@@ -320,7 +323,7 @@ public class Picture extends SimplePicture
 	 */
 	public static void main(String[] args)
 	{
-		Picture beach = new Picture("beach.jpg");
+		Picture beach = new Picture("arch.jpg");
 		beach.explore();
 		beach.classFilter();
 		beach.explore();
