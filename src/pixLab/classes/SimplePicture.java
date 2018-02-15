@@ -538,7 +538,7 @@ public class SimplePicture implements DigitalPicture
   */
  public void drawString(String text, int xPos, int yPos, int rColor, int gColor, int bColor)
  {
-   addMessage(text,xPos,yPos,255,255,255);
+   addMessage(text,xPos,yPos,rColor,gColor,bColor);
  }
  
  /**

@@ -302,7 +302,6 @@ public class Picture extends SimplePicture
 		Pixel[][] pixels = this.getPixels2D();
 		int height = pixels.length;
 		double topBotArea = (pixels.length * .1);
-		double sideArea = (pixels[0].length * .1);
 
 		for (int row = (int) topBotArea; row < height - topBotArea; row++)
 		{
@@ -315,7 +314,7 @@ public class Picture extends SimplePicture
 			}
 		}
 		
-		pixels.addMessage("Hello", topBotArea, sideArea, 154, 12, 15);
+		
 	}
 
 	/*
@@ -326,6 +325,7 @@ public class Picture extends SimplePicture
 		Picture beach = new Picture("arch.jpg");
 		beach.explore();
 		beach.classFilter();
+		beach.drawString("Testing Colors On The Image", 15, 15, 212, 35, 176);
 		beach.explore();
 	}
 
