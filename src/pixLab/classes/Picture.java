@@ -292,6 +292,39 @@ public class Picture extends SimplePicture
 				pixels[row][col].setColor(currentColors[(col + shiftAmount) % width]);
 			}
 		}
+		
+		int redValue = 0;
+		int blueValue = 0;
+		int greenValue = 0;
+		for (int row = 0; row < 150; row++)
+		{
+			for (int col = 0; col < 200; col++)
+			{
+				redValue = pixels[row][col].getRed();
+				blueValue = pixels[row][col].getBlue();
+				greenValue = pixels[row + 60][col + 50].getGreen();
+				pixels[row + 60][col + 50].setColor(new Color(redValue, blueValue, greenValue));
+			}
+		}
+		
+		for (int index = 0; index <= 3; index++)
+		{
+			int ranRow = (int) (Math.random() * (pixels.length - 75));
+			int ranCol = (int) (Math.random() * (pixels[0].length - 75));
+			int ranHeight = (int) ((Math.random() * 70) + 20);
+			int ranWidth = (int) ((Math.random() * 70) + 20);
+			
+			for (int row = ranRow; row <= ranRow + ranHeight; row++)
+			{
+				for (int col = ranCol; col <= ranCol + ranWidth; col++)
+				{
+					int redColor = (int) (Math.random() * 255);
+					int greenColor = (int) (Math.random() * 255);
+					int blueColor = (int) (Math.random() * 255);
+					pixels[row][col].setColor(new Color(redColor, greenColor, blueColor));
+				}
+			}
+		}
 	}
 	
 	public void classFilter()
@@ -305,16 +338,13 @@ public class Picture extends SimplePicture
 
 		for (int row = (int) topBotArea; row < height - topBotArea; row++)
 		{
-			for (int col = 180; col < mirrorPoint; col++)
+			for (int col = 120; col < mirrorPoint; col++)
 			{
-
 				leftPixel = pixels[row][col];
 				rightPixel = pixels[row][mirrorPoint - col + mirrorPoint];
 				rightPixel.setColor(leftPixel.getColor());
 			}
 		}
-		
-		
 	}
 
 	/*
@@ -322,10 +352,9 @@ public class Picture extends SimplePicture
 	 */
 	public static void main(String[] args)
 	{
-		Picture beach = new Picture("arch.jpg");
+		Picture beach = new Picture("beach.jpg");
 		beach.explore();
-		beach.classFilter();
-		beach.drawString("Testing Colors On The Image", 15, 15, 212, 35, 176);
+		beach.glitchArt();
 		beach.explore();
 	}
 
